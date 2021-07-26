@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExecutionContext", "src\ExecutionContext\ExecutionContext.csproj", "{5D8FE59B-A10F-43B5-8087-1DEFB9FB7F9C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{267F6239-9FF2-46D8-917E-931B7736BE03}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{664F17A0-A2CA-4A18-B521-FC4D7193DB0E}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		ExecutionContext.sln.licenseheader = ExecutionContext.sln.licenseheader
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{17370B2C-1F34-4EBD-9D7C-6E7278FDB22D}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\myget-unstable-deploy.yml = .github\workflows\myget-unstable-deploy.yml
+		.github\workflows\nuget-stable-deploy.yml = .github\workflows\nuget-stable-deploy.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D8FE59B-A10F-43B5-8087-1DEFB9FB7F9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D8FE59B-A10F-43B5-8087-1DEFB9FB7F9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D8FE59B-A10F-43B5-8087-1DEFB9FB7F9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D8FE59B-A10F-43B5-8087-1DEFB9FB7F9C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5D8FE59B-A10F-43B5-8087-1DEFB9FB7F9C} = {267F6239-9FF2-46D8-917E-931B7736BE03}
+		{17370B2C-1F34-4EBD-9D7C-6E7278FDB22D} = {664F17A0-A2CA-4A18-B521-FC4D7193DB0E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8CBB9DAF-1629-442E-8002-A642E6809E3B}
+	EndGlobalSection
+EndGlobal
