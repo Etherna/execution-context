@@ -21,15 +21,25 @@ namespace Etherna.ExecContext.AsyncLocal
     public sealed class AsyncLocalContextHandler : IAsyncLocalContextHandler
     {
         // Constructors.
-        internal AsyncLocalContextHandler(IHandledAsyncLocalContext handledContext)
+        internal AsyncLocalContextHandler(
+            IHandledAsyncLocalContext handledContext,
+            bool isActive)
         {
             HandledContext = handledContext;
+            IsActive = isActive;
         }
 
         // Properties.
+        public bool IsActive { get; }
+
+        // Internal properties.
         internal IHandledAsyncLocalContext HandledContext { get; }
 
         // Methods.
-        public void Dispose() => HandledContext.OnDisposed(this);
+        public void Dispose()
+        {
+            if (IsActive)
+                HandledContext.OnDisposed(this);
+        }
     }
 }

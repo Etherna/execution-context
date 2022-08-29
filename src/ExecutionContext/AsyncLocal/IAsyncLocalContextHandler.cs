@@ -21,5 +21,6 @@ namespace Etherna.ExecContext.AsyncLocal
     /// </summary>
     public interface IAsyncLocalContextHandler : IDisposable
     {
+        bool IsActive { get; }
     }
 }

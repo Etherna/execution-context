@@ -42,15 +42,13 @@ namespace Etherna.ExecContext.AsyncLocal
         // Methods.
         public IAsyncLocalContextHandler InitAsyncLocalContext()
         {
-            if (asyncLocalContext.Value != null)
-                throw new InvalidOperationException("Only one context at time is supported");
+            var isActiveHandler = asyncLocalContext.Value is null;
+            asyncLocalContext.Value ??= new Dictionary<object, object?>();
 
-            asyncLocalContext.Value = new Dictionary<object, object?>();
-
-            return new AsyncLocalContextHandler(this);
+            return new AsyncLocalContextHandler(this, isActiveHandler);
         }
 
-        public void OnDisposed(IAsyncLocalContextHandler context) =>
+        public void OnDisposed(IAsyncLocalContextHandler handler) =>
             asyncLocalContext.Value = null;
     }
 }

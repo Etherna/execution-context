@@ -89,5 +89,21 @@ namespace Etherna.ExecContext.AsyncLocal
             // Assert.
             Assert.Null(asyncLocalContext.Items);
         }
+
+        [Fact]
+        public void SupportMultiInitialization()
+        {
+            // Action.
+            using (var handler0 = AsyncLocalContext.Instance.InitAsyncLocalContext())
+            {
+                var originalItems = asyncLocalContext.Items;
+                using var handler1 = AsyncLocalContext.Instance.InitAsyncLocalContext();
+
+                // Assert.
+                Assert.Equal(originalItems, asyncLocalContext.Items);
+            }
+
+            Assert.Null(asyncLocalContext.Items);
+        }
     }
 }
