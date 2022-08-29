@@ -20,6 +20,6 @@ namespace Etherna.ExecContext.AsyncLocal
     /// </summary>
     internal interface IHandledAsyncLocalContext
     {
-        void OnDisposed(IAsyncLocalContextHandler context);
+        void OnDisposed(IAsyncLocalContextHandler handler);
     }
 }

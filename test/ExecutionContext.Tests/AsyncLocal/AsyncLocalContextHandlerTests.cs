@@ -25,7 +25,7 @@ namespace Etherna.ExecContext.AsyncLocal
         public AsyncLocalContextHandlerTests()
         {
             handledContext = new Mock<IHandledAsyncLocalContext>();
-            handler = new AsyncLocalContextHandler(handledContext.Object);
+            handler = new AsyncLocalContextHandler(handledContext.Object, true);
         }
 
         [Fact]
@@ -36,13 +36,26 @@ namespace Etherna.ExecContext.AsyncLocal
         }
 
         [Fact]
-        public void HandlerDispose()
+        public void ActiveHandlerDispose()
         {
             // Action.
             handler.Dispose();
 
             // Assert.
             handledContext.Verify(c => c.OnDisposed(handler), Times.Once);
+        }
+
+        [Fact]
+        public void PassiveHandlerDispose()
+        {
+            // Setup.
+            var passiveHandler = new AsyncLocalContextHandler(handledContext.Object, false);
+
+            // Action.
+            passiveHandler.Dispose();
+
+            // Assert.
+            handledContext.Verify(c => c.OnDisposed(passiveHandler), Times.Never);
         }
     }
 }
