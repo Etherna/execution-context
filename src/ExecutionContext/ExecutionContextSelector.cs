@@ -21,25 +21,21 @@ namespace Etherna.ExecContext
     ///     A multi context selector that take different contexts, and select the first available.
     /// </summary>
     /// <remarks>
-    ///     This class is intended to have the same lifetime of it's consumer. For example, in case
+    ///     This class is intended to have the same lifetime of its consumer. For example, in case
     ///     of using with a DbContext, the same DbContext instance will use the same ContextSelector
     ///     instance. This mean that if a DbContext is running over different execution contexts,
     ///     every <see cref="Items"/> invoke on same context needs to return the same dictionary.
     ///     The simplest way to perform this, is to return the first not null available dictionary
     ///     on subscribed contexts.
     /// </remarks>
-    public class ExecutionContextSelector : IExecutionContext
+    public class ExecutionContextSelector(IEnumerable<IExecutionContext> contexts)
+        : IExecutionContext
     {
         // Fields.
-        private readonly IEnumerable<IExecutionContext> contexts;
+        private readonly IEnumerable<IExecutionContext> contexts =
+            contexts ?? throw new ArgumentNullException(nameof(contexts));
 
-        // Constructors.
-        public ExecutionContextSelector(IEnumerable<IExecutionContext> contexts)
-        {
-            this.contexts = contexts ?? throw new ArgumentNullException(nameof(contexts));
-        }
-
-        // Proeprties.
+        // Properties.
         public IDictionary<object, object?>? Items
         {
             get

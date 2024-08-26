@@ -27,11 +27,11 @@ namespace Etherna.ExecContext.AspNetCore
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.TryAddSingleton<IExecutionContext>(serviceProvider =>
-               new ExecutionContextSelector(new IExecutionContext[] //default
-               {
-                    new HttpContextExecutionContext(serviceProvider.GetRequiredService<IHttpContextAccessor>()),
-                    AsyncLocalContext.Instance
-               }));
+               new ExecutionContextSelector( //default
+               [
+                   new HttpContextExecutionContext(serviceProvider.GetRequiredService<IHttpContextAccessor>()),
+                   AsyncLocalContext.Instance
+               ]));
 
             return services;
         }
