@@ -28,7 +28,7 @@ namespace Etherna.ExecContext
         public void ContextSelection(
             bool enableContext1,
             bool enableContext2,
-            string expectedResult)
+            string? expectedResult)
         {
             // Setup.
             Mock<IExecutionContext> context0 = new();
