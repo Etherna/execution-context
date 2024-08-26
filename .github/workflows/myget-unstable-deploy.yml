@@ -3,9 +3,7 @@ name: Unstable release deploy to MyGet
 on:
   push:
     branches:
-    - dev
-    - 'hotfix/**'
-    - 'release/**'
+      - dev
 
 jobs:
   build-test-package:
