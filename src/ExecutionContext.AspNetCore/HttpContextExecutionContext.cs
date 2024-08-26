@@ -29,6 +29,6 @@ namespace Etherna.ExecContext.AspNetCore
         }
 
         // Properties.
-        public IDictionary<object, object?>? Items => httpContextAccessor?.HttpContext?.Items;
+        public IDictionary<object, object?>? Items => httpContextAccessor.HttpContext?.Items;
     }
 }
